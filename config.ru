@@ -1,4 +1,3 @@
-
 require 'toto'
 
 # Rack config
@@ -27,6 +26,9 @@ toto = Toto::Server.new do
   # set :ext,       'txt'                                     # file extension for articles
   # set :cache,      28800                                    # cache duration, in seconds
 
+  set :root, "index"
+  set :title, 'Luan Santos blog'
+  set :author, 'luan'
   set :disqus, 'cfcluan'
   set :date, lambda {|now| now.strftime("%B #{now.day.ordinal} %Y") }
 end
