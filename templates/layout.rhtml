@@ -1,16 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
+		<link href='http://fonts.googleapis.com/css?family=Flamenco|Bitter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
     <title><%= title %></title>
   </head>
   <body>
-    <section>
-      <%= yield %> 
-    </section>
-    <footer>
+		<div id="content">
+			<header>
+				<nav>
+	        <a href="/"<%= ' class="active"' if @path == 'index' %>>Home</a>
+					<a href="/archives"<%= ' class="active"' if @path == 'archives' %>>Archives</a>
+					<a href="http://luansantos.com">About</a>
+				</nav>
+				luan<span>santos</span>
+			</header>
+	    <section>
+	      <%= yield %> 
+	    </section>
+		</div>
+		<footer>
       powered by <a href="http://cloudhead.io/toto">toto</a>
     </footer>
   </body>
