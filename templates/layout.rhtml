@@ -4,11 +4,20 @@
 		<link href='http://fonts.googleapis.com/css?family=Flamenco|Bitter' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="/css/zenburn.css">
 		<link rel="stylesheet" href="/css/main.css">
-    <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <title><%= title %></title>
+		<link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+		<meta name="description" content="<%= @context[:description] || 'Luan\'s blog is about ruby, for now' %>" />
+		<title>
+			<% if @path == 'index' %>
+			    Luan's blog
+			<% elsif @path.split('/').compact.length == 4 %>
+			    <%= title %> - Luan's blog
+			<% else %>
+			    <%= @path.capitalize.gsub(/[-]/, ' ') %> - Luan's blog
+			<% end %>
+		</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="/js/jquery.lettering-0.6.1.min.js"></script>
+		<script src="/js/jquery.lettering.min.js"></script>
 		<script src="/js/highlight.pack.js"></script>
 		<script>
 			$(function() {
@@ -29,16 +38,16 @@
 				<nav>
 	        <a href="/"<%= ' class="active"' if @path == 'index' %>>Home</a>
 					<a href="/archives"<%= ' class="active"' if @path == 'archives' %>>Archives</a>
-					<a href="http://luansantos.com">About</a>
+					<a href="/about"<%= ' class="active"' if @path == 'about' %>>About</a>
 				</nav>
-				luan<span>santos</span>
+				<a href="/">luan<span>santos</span></a>
 			</header>
 	    <section>
 	      <%= yield %> 
 	    </section>
 		</div>
 		<footer>
-      powered by <a href="http://cloudhead.io/toto">toto</a>
+			© Luan Santos 2012. This site uses <a href="http://cloudhead.io/toto">toto</a>. This template is called <a href="http://github.com/luan/valkyrie">valkyrie</a> and is <strong>open source</strong>.
     </footer>
   </body>
 </html>
